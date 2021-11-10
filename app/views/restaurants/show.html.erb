@@ -15,5 +15,13 @@
   <%= @restaurant.stars %>
 </p>
 
+<h6>All the review of <%= @restaurant.name %>: </h6>
+<% @restaurant.reviews.each do |review| %>
+  <p>"<%= review.content %>"</p>
+  <%= link_to "Delete review", review_path(review), method: :delete, data:{confirm: "Are you sure?"} %>
+<% end %>
+
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
+<br>
+<%= link_to 'Add a review', new_restaurant_review_path(@restaurant) %>
